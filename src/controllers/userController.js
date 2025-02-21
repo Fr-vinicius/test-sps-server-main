@@ -145,23 +145,34 @@ export function updateUser(request, response) {
 }
 
 export function deleteUser(request, response) {
+  if (!request.user || !request.user.id) {
+    return response.status(401).json({ message: "Token is invalid " });
+  }
   const idUsuario = request.user.id;
+
   const currentUser = users.find((u) => u.id == idUsuario);
 
   const isAdmin = currentUser.type === "admin";
 
   const { id } = request.body;
-  try {
-    const toBeDeleted = isAdmin
-      ? users.find((u) => u.id === id)
-      : users.find((u) => u.id === idUsuario);
 
-    if (!toBeDeleted) {
+  try {
+    if (isAdmin && id === idUsuario) {
+      return response
+        .status(404)
+        .json({ message: "User cannot delete himself." });
+    }
+
+    const toBeDeleted = isAdmin
+      ? users.findIndex((u) => u.id === id)
+      : users.findIndex((u) => u.id === idUsuario);
+
+    if (toBeDeleted === -1) {
       return response.status(404).json({ message: "User not found" });
     }
 
     users.splice(toBeDeleted, 1);
-    response.json({ message: "Usuer deleted successfully." });
+    response.json({ message: "User deleted successfully." });
   } catch {
     return response.status(400).json({ message: "Unable to delete user." });
   }
