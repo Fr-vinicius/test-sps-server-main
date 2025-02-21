@@ -30,7 +30,7 @@ Backend do teste com rotas, middleware e controllers para gerenciar as requisiç
 ## Uso
 
 1. Inicie o servidor de desenvolvimento:
-   npm run start
+   npm run dev
 
 2. O servidor será executado na porta `http://localhost:3001`.
 
