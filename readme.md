@@ -9,11 +9,10 @@ Backend do teste com rotas, middleware e controllers para gerenciar as requisiç
 ## Índice
 
 1. [Descrição](#descrição)
-2. [Pré-requisitos](#pré-requisitos)
-3. [Instalação](#instalação)
-4. [Uso](#uso)
-5. [Endpoints](#Endpoints)
-6. [Contato](#contato)
+2. [Instalação](#instalação)
+3. [Uso](#uso)
+4. [Endpoints](#Endpoints)
+5. [Contato](#contato)
 
 ---
 
